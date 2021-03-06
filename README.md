@@ -1,5 +1,5 @@
 # fake-build
-<img src="./image.gif" width="200">
+<img src="./image.gif" width="500">
 The fake building animation on terminal application.
 
 ### Usage

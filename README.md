@@ -1,5 +1,5 @@
 # fake-build
-The fake build animation on terminal application.
+The fake building animation on terminal application.
 
 ### Usage
 **install**

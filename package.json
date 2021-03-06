@@ -5,7 +5,8 @@
   "main": "index.js",
   "private": true,
   "bin": {
-    "fake-build": "./bin/fake-build"
+    "fake-build": "./bin/fake-build",
+    "fbuild": "./bin/fbuild"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

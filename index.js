@@ -14,7 +14,7 @@ function progress() {
   });
 }
 
-async function oneTask(title) {
+async function runTask(title) {
   print(title + ": [");
   for (let i = 0; i < 30; i++) {
     await progress();
@@ -24,7 +24,7 @@ async function oneTask(title) {
 
 async function runTasks(tasks) {
   for (const task of tasks) {
-    await oneTask(task);
+    await runTask(task);
   }
 }
 
@@ -50,13 +50,13 @@ function getRepositories(owner) {
 async function fakeInstall(owner) {
   const repos = await getRepositories(owner);
   for (const repo of repos) {
-    await oneTask("Downloading " + repo);
+    await runTask("Downloading " + repo);
   }
   for (const repo of repos) {
-    await oneTask("Building " + repo);
+    await runTask("Building " + repo);
   }
   for (const repo of repos) {
-    await oneTask("Installing " + repo);
+    await runTask("Installing " + repo);
   }
 }
 

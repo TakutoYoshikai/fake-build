@@ -25,8 +25,9 @@ async function runTask(title, speed) {
   print("]    Done!!!\n");
 }
 
-async function runTasks(tasks, speed) {
+async function runTasks(tasks) {
   for (const task of tasks) {
+    const speed = Math.floor(Math.random() * 800);
     await runTask(task, speed);
   }
 }

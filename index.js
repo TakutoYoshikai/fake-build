@@ -5,7 +5,7 @@ function print(str) {
 }
 
 function progress() {
-  const i = Math.floor(Math.random() * 1000);
+  const i = Math.floor(Math.random() * 800);
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       print("#");

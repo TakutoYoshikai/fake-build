@@ -4,27 +4,30 @@ function print(str) {
   process.stdout.write(str);
 }
 
-function progress() {
-  const i = Math.floor(Math.random() * 800);
+function progress(speed) {
+  if (speed === undefined) {
+    speed = 800;
+  }
+  const i = Math.floor(Math.random() * speed);
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       print("#");
       resolve();
-    }, Math.floor(Math.random() * 100) + i);
+    }, Math.floor(Math.random() * (speed / 8)) + i);
   });
 }
 
-async function runTask(title) {
+async function runTask(title, speed) {
   print(title + ": [");
   for (let i = 0; i < 30; i++) {
-    await progress();
+    await progress(speed);
   }
   print("]    Done!!!\n");
 }
 
-async function runTasks(tasks) {
+async function runTasks(tasks, speed) {
   for (const task of tasks) {
-    await runTask(task);
+    await runTask(task, speed);
   }
 }
 
@@ -50,13 +53,16 @@ function getRepositories(owner) {
 async function fakeInstall(owner) {
   const repos = await getRepositories(owner);
   for (const repo of repos) {
-    await runTask("Downloading " + repo);
+    const speed = Math.floor(Math.random() * 800);
+    await runTask("Downloading " + repo, speed);
   }
   for (const repo of repos) {
-    await runTask("Building " + repo);
+    const speed = Math.floor(Math.random() * 800);
+    await runTask("Building " + repo, speed);
   }
   for (const repo of repos) {
-    await runTask("Installing " + repo);
+    const speed = Math.floor(Math.random() * 800);
+    await runTask("Installing " + repo, speed);
   }
 }
 

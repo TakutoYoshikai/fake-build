@@ -5,11 +5,12 @@ function print(str) {
 }
 
 function progress() {
+  const i = Math.floor(Math.random() * 1000);
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       print("#");
       resolve();
-    }, Math.floor(Math.random() * 1000));
+    }, Math.floor(Math.random() * 100) + i);
   });
 }
 

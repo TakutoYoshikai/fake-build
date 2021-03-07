@@ -34,7 +34,7 @@ async function runTask(title, speed) {
 
 async function runTasks(tasks) {
   for (const task of tasks) {
-    const speed = Math.floor(Math.random() * 800);
+    const speed = makeSpeed();
     await runTask(task, speed);
   }
 }
@@ -58,18 +58,22 @@ function getRepositories(owner) {
   });
 }
 
+function makeSpeed() {
+    return Math.floor(Math.random() * 800);
+}
+
 async function fakeInstall(owner) {
   const repos = await getRepositories(owner);
   for (const repo of repos) {
-    const speed = Math.floor(Math.random() * 800);
+    const speed = makeSpeed();
     await runTask("Downloading " + repo, speed);
   }
   for (const repo of repos) {
-    const speed = Math.floor(Math.random() * 800);
+    const speed = makeSpeed();
     await runTask("Building " + repo, speed);
   }
   for (const repo of repos) {
-    const speed = Math.floor(Math.random() * 800);
+    const speed = makeSpeed();
     await runTask("Installing " + repo, speed);
   }
 }

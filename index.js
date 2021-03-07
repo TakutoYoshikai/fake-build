@@ -1,28 +1,35 @@
 const request = require("request");
+const cliProgress = require("cli-progress");
 
 function print(str) {
   process.stdout.write(str);
 }
 
-function progress(speed) {
+function progress(bar, value, speed) {
   if (speed === undefined) {
     speed = 800;
   }
   const i = Math.floor(Math.random() * speed);
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      print("#");
+      bar.update(value);
       resolve();
     }, Math.floor(Math.random() * (speed / 8)) + i);
   });
 }
 
 async function runTask(title, speed) {
-  print(title + ": [");
-  for (let i = 0; i < 30; i++) {
-    await progress(speed);
+  console.log(title);
+  const bar = new cliProgress.SingleBar({
+    barCompleteChar: "#",
+    barIncompleteChar: " ",
+    hideCursor: true
+  }, cliProgress.Presets.shades_classic);
+  bar.start(30, 0);
+  for (let i = 0; i <= 30; i++) {
+    await progress(bar, i, speed);
   }
-  print("]    Done!!!\n");
+  bar.stop();
 }
 
 async function runTasks(tasks) {

@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/TakutoYoshikai/fake-build#readme",
   "dependencies": {
-    "cli-progress": "^3.9.0",
+    "cli-progress": "^3.11.2",
     "request": "^2.88.2"
   }
 }
